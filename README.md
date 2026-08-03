@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/emireln/2tier/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-white.svg" alt="License MIT"></a>
+  <a href="https://github.com/emireln/2tier/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-white.svg" alt="License Apache 2.0"></a>
   <a href="https://github.com/emireln/2tier"><img src="https://img.shields.io/badge/Version-1.0.0-black.svg" alt="Version 1.0.0"></a>
   <a href="https://github.com/emireln/2tier"><img src="https://img.shields.io/badge/Desktop-Electron-black.svg" alt="Electron App"></a>
   <a href="https://github.com/emireln/2tier"><img src="https://img.shields.io/badge/React-18-black.svg" alt="React 18"></a>
@@ -119,7 +119,7 @@
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the Apache License, Version 2.0. See `LICENSE` for more information.
 
 ---
 
