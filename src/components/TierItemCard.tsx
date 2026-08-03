@@ -28,8 +28,8 @@ export const TierItemCard: React.FC<Props> = ({ item }) => {
   const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: isDragging ? 0.25 : 1,
-    touchAction: 'none',
+    opacity: isDragging ? 0.2 : 1,
+    touchAction: 'manipulation',
     willChange: 'transform',
   }
 

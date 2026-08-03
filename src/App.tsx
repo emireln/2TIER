@@ -196,6 +196,10 @@ export const App: React.FC = () => {
   return (
     <DndContext
       sensors={sensors}
+      autoScroll={{
+        threshold: { x: 0.1, y: 0.1 },
+        acceleration: 15,
+      }}
       measuring={{ droppable: { strategy: MeasuringStrategy.Always } }}
       collisionDetection={(args) => {
         const pointerCollisions = pointerWithin(args)
@@ -245,9 +249,9 @@ export const App: React.FC = () => {
         {activeDrawer === 'settings' && <SettingsDrawer />}
       </div>
 
-      <DragOverlay dropAnimation={{ duration: 150, easing: 'cubic-bezier(0.18, 0.67, 0.6, 1.22)' }}>
+      <DragOverlay dropAnimation={null}>
         {activeItem ? (
-          <div className="w-20 h-20 bg-surface-elevated rounded-lg border-2 border-white overflow-hidden shadow-2xl scale-110 flex items-center justify-center pointer-events-none opacity-90 will-change-transform">
+          <div className="w-20 h-20 bg-surface-elevated rounded-lg border-2 border-white overflow-hidden shadow-2xl scale-105 flex items-center justify-center pointer-events-none opacity-95 will-change-transform">
             <img
               src={activeItem.src}
               alt={activeItem.label || 'Dragging item'}
