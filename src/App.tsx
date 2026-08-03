@@ -80,6 +80,7 @@ export const App: React.FC = () => {
 
     if (item) {
       setActiveItem(item)
+      useTierStore.getState().setActiveItem(item)
     }
   }
 
@@ -111,6 +112,7 @@ export const App: React.FC = () => {
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event
     setActiveItem(null)
+    useTierStore.getState().setActiveItem(null)
 
     if (!over) return
 

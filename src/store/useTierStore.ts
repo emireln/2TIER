@@ -120,6 +120,8 @@ interface StoreState {
   setHideHeaderTitle: (hide: boolean) => void
   toggleHideHeaderTitle: () => void
   togglePoolVisibility: () => void
+  activeItem: TierItem | null
+  setActiveItem: (item: TierItem | null) => void
   setActiveDrawer: (drawer: 'templates' | 'export' | 'my-lists' | 'settings' | null) => void
   updateExportSettings: (settings: Partial<ExportSettings>) => void
 
@@ -189,14 +191,15 @@ export const useTierStore = create<StoreState>((set, get) => {
     theme: 'dark',
     language: loadSavedLanguage(),
     hideHeaderTitle: loadSavedHideHeaderTitle(),
-
+    isPoolVisible: true,
+    activeItem: null,
+    setActiveItem: (item) => set({ activeItem: item }),
     history: initialHistory,
     historyIndex: 0,
     canUndo: false,
     canRedo: false,
 
     activeDrawer: null,
-    isPoolVisible: true,
     customTemplates: loadSavedCustomTemplates(),
     savedTierLists: loadSavedTierListsFromStorage(),
 

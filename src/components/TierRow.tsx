@@ -32,6 +32,7 @@ export const TierRow: React.FC<Props> = ({ row, index, totalRows }) => {
     clearTierRow,
     moveTierRow,
     language,
+    activeItem,
   } = useTierStore()
 
   const t = translations[language] || translations.en
@@ -74,7 +75,7 @@ export const TierRow: React.FC<Props> = ({ row, index, totalRows }) => {
   }
 
   return (
-    <div className="relative flex w-full min-h-[96px] bg-surface rounded-xl border border-border/70 shadow-sm hover:border-border transition-all">
+    <div className="relative flex w-full min-h-[96px] bg-surface rounded-xl border border-border/70 shadow-sm hover:border-border transition-all box-border overflow-hidden">
       {/* Row Header Tag (Label + Color) */}
       <div
         style={{ backgroundColor: row.color }}
@@ -146,11 +147,11 @@ export const TierRow: React.FC<Props> = ({ row, index, totalRows }) => {
         </div>
       </div>
 
-      {/* Row Items Drop Container */}
+      {/* Row Items Drop Container - Static Dimension Box */}
       <div
         ref={setNodeRef}
-        className={`flex-1 p-2.5 flex flex-wrap items-center gap-2.5 min-h-[96px] transition-colors ${
-          isOver ? 'bg-zinc-800/40 ring-2 ring-zinc-500/50' : 'bg-surface-elevated/30'
+        className={`flex-1 p-2.5 flex flex-wrap items-center gap-2.5 min-h-[96px] transition-colors box-border ${
+          isOver ? 'bg-zinc-800/40 ring-1 ring-inset ring-zinc-500/50' : 'bg-surface-elevated/30'
         }`}
       >
         <SortableContext items={itemIds} strategy={horizontalListSortingStrategy}>
@@ -158,6 +159,17 @@ export const TierRow: React.FC<Props> = ({ row, index, totalRows }) => {
             <TierItemCard key={item.id} item={item} />
           ))}
         </SortableContext>
+
+        {/* Low-Opacity Drop Placement Indicator */}
+        {isOver && activeItem && !row.items.some((i) => i.id === activeItem.id) && (
+          <div className="w-20 h-20 rounded-lg border-2 border-dashed border-zinc-400/80 bg-zinc-800/30 opacity-40 shrink-0 flex items-center justify-center overflow-hidden pointer-events-none animate-pulse">
+            <img
+              src={activeItem.src}
+              alt="Drop target preview"
+              className="w-full h-full object-cover opacity-40 pointer-events-none"
+            />
+          </div>
+        )}
 
         {row.items.length === 0 && !isOver && (
           <div className="w-full text-center text-xs text-muted-foreground/40 italic pointer-events-none select-none">
