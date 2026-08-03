@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #09090b; }
+      .border-line { stroke: #27272a; stroke-width: 1.5; }
+      .text-primary { fill: #ffffff; font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 800; }
+      .text-secondary { fill: #a1a1aa; font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 500; }
+      .accent-box { fill: #18181b; stroke: #27272a; stroke-width: 1.5; rx: 12px; }
+      .tier-label { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 900; font-size: 14px; text-anchor: middle; dominant-baseline: central; }
+      .item-box { fill: #27272a; rx: 6px; }
+    </style>
+  </defs>
+
+  <!-- Dark Background Container -->
+  <rect width="1200" height="360" rx="16" class="bg" />
+  <rect x="1" y="1" width="1198" height="358" rx="15" fill="none" class="border-line" />
+
+  <!-- Abstract Background Dots Grid Pattern -->
+  <g fill="#27272a" opacity="0.4">
+    <circle cx="100" cy="60" r="1.5" />
+    <circle cx="140" cy="60" r="1.5" />
+    <circle cx="180" cy="60" r="1.5" />
+    <circle cx="100" cy="100" r="1.5" />
+    <circle cx="140" cy="100" r="1.5" />
+    <circle cx="180" cy="100" r="1.5" />
+    <circle cx="1020" cy="260" r="1.5" />
+    <circle cx="1060" cy="260" r="1.5" />
+    <circle cx="1100" cy="260" r="1.5" />
+    <circle cx="1020" cy="300" r="1.5" />
+    <circle cx="1060" cy="300" r="1.5" />
+    <circle cx="1100" cy="300" r="1.5" />
+  </g>
+
+  <!-- Left Side: 2TIER Vector Logo + Branding -->
+  <g transform="translate(80, 105)">
+    <!-- 2TIER Vector Symbol (Scaled Official Logo Paths) -->
+    <g transform="scale(0.22)" fill="#ffffff">
+      <!-- Row 1 -->
+      <g>
+        <path d="M115.65,24.92H33.507C15.031,24.92,0,39.951,0,58.421v82.143c0,18.477,15.031,33.501,33.507,33.501h82.143 c18.476,0,33.501-15.031,33.501-33.501V58.421C149.145,39.945,134.12,24.92,115.65,24.92z" />
+        <path d="M526.908,24.92H212.205c-18.477,0-33.501,15.031-33.501,33.501v82.143c0,18.477,15.025,33.501,33.501,33.501h314.703 c18.477,0,33.506-15.031,33.506-33.501V58.421C560.414,39.945,545.377,24.92,526.908,24.92z" />
+      </g>
+      <!-- Row 2 -->
+      <g>
+        <path d="M115.65,205.632H33.507C15.031,205.632,0,220.663,0,239.133v82.143c0,18.476,15.031,33.5,33.507,33.5h82.143 c18.476,0,33.501-15.024,33.501-33.5v-82.143C149.145,220.657,134.12,205.632,115.65,205.632z" />
+        <path d="M526.908,205.632H212.205c-18.477,0-33.501,15.031-33.501,33.501v82.143c0,18.476,15.025,33.5,33.501,33.5h314.703 c18.477,0,33.506-15.024,33.506-33.5v-82.143C560.414,220.657,545.377,205.632,526.908,205.632z" />
+      </g>
+      <!-- Row 3 -->
+      <g>
+        <path d="M115.65,386.343H33.507C15.031,386.343,0,401.374,0,419.85v82.143c0,18.477,15.031,33.501,33.507,33.501h82.143 c18.476,0,33.501-15.024,33.501-33.501V419.85C149.145,401.374,134.12,386.343,115.65,386.343z" />
+        <path d="M526.908,386.343H212.205c-18.477,0-33.501,15.03-33.501,33.507v82.143c0,18.477,15.025,33.501,33.501,33.501h314.703 c18.477,0,33.506-15.024,33.506-33.501V419.85C560.414,401.374,545.377,386.343,526.908,386.343z" />
+      </g>
+    </g>
+
+    <!-- Typography -->
+    <text x="150" y="65" class="text-primary" font-size="54" letter-spacing="-1.5">2TIER</text>
+    <text x="152" y="102" class="text-secondary" font-size="13" letter-spacing="3">MINIMALIST TIER LIST APPLICATION</text>
+  </g>
+
+  <!-- Right Side: Minimalist Tier Card Preview Representation -->
+  <g transform="translate(680, 50)">
+    <!-- Row S -->
+    <rect x="0" y="0" width="440" height="52" rx="10" class="accent-box" />
+    <rect x="0" y="0" width="60" height="52" rx="10" fill="#ffffff" />
+    <text x="30" y="26" class="tier-label" fill="#09090b">S</text>
+    <rect x="72" y="10" width="32" height="32" class="item-box" />
+    <rect x="112" y="10" width="32" height="32" class="item-box" />
+    <rect x="152" y="10" width="32" height="32" class="item-box" />
+
+    <!-- Row A -->
+    <rect x="0" y="64" width="440" height="52" rx="10" class="accent-box" />
+    <rect x="0" y="64" width="60" height="52" rx="10" fill="#e4e4e7" />
+    <text x="30" y="90" class="tier-label" fill="#09090b">A</text>
+    <rect x="72" y="74" width="32" height="32" class="item-box" />
+    <rect x="112" y="74" width="32" height="32" class="item-box" />
+
+    <!-- Row B -->
+    <rect x="0" y="128" width="440" height="52" rx="10" class="accent-box" />
+    <rect x="0" y="128" width="60" height="52" rx="10" fill="#a1a1aa" />
+    <text x="30" y="154" class="tier-label" fill="#09090b">B</text>
+    <rect x="72" y="138" width="32" height="32" class="item-box" />
+
+    <!-- Row C -->
+    <rect x="0" y="192" width="440" height="52" rx="10" class="accent-box" />
+    <rect x="0" y="192" width="60" height="52" rx="10" fill="#52525b" />
+    <text x="30" y="218" class="tier-label" fill="#ffffff">C</text>
+    <rect x="72" y="202" width="32" height="32" class="item-box" />
+    <rect x="112" y="202" width="32" height="32" class="item-box" />
+    <rect x="152" y="202" width="32" height="32" class="item-box" />
+  </g>
+
+  <!-- Bottom Subtle Line Accent -->
+  <line x1="80" y1="310" x2="1120" y2="310" stroke="#27272a" stroke-width="1" stroke-dasharray="4 4" />
+</svg>
