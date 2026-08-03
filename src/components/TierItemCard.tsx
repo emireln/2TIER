@@ -28,8 +28,9 @@ export const TierItemCard: React.FC<Props> = ({ item }) => {
   const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: isDragging ? 0.3 : 1,
+    opacity: isDragging ? 0.25 : 1,
     touchAction: 'none',
+    willChange: 'transform',
   }
 
   return (
@@ -47,36 +48,35 @@ export const TierItemCard: React.FC<Props> = ({ item }) => {
           className="w-full h-full object-cover pointer-events-none"
         />
 
-        {item.label && (
-          <div className="absolute bottom-0 inset-x-0 bg-black/75 backdrop-blur-xs px-1 py-0.5 text-[10px] text-zinc-200 truncate text-center font-medium pointer-events-none">
-            {item.label}
+        {/* Compact Bottom Action Bar */}
+        <div className="absolute bottom-0 inset-x-0 bg-black/85 backdrop-blur-xs py-0.5 px-1.5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
+          <span className="text-[10px] text-zinc-300 font-medium truncate max-w-[42px] pointer-events-none">
+            {item.label || ''}
+          </span>
+          <div className="flex items-center space-x-1 pointer-events-auto">
+            <button
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation()
+                setShowPreview(true)
+              }}
+              className="p-0.5 rounded hover:bg-zinc-700 text-zinc-300 hover:text-white transition-colors"
+              title={t.previewImage}
+            >
+              <Maximize2 className="w-3 h-3" />
+            </button>
+            <button
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation()
+                deleteItem(item.id)
+              }}
+              className="p-0.5 rounded hover:bg-red-800 text-red-300 hover:text-white transition-colors"
+              title={t.deleteItem}
+            >
+              <XIcon size={11} />
+            </button>
           </div>
-        )}
-
-        {/* Hover Overlay Action Controls */}
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-1.5 p-1 z-10 pointer-events-auto">
-          <button
-            onPointerDown={(e) => e.stopPropagation()}
-            onClick={(e) => {
-              e.stopPropagation()
-              setShowPreview(true)
-            }}
-            className="p-1 rounded bg-zinc-800/80 hover:bg-zinc-700 text-zinc-200 hover:text-white transition-colors"
-            title={t.previewImage}
-          >
-            <Maximize2 className="w-3 h-3" />
-          </button>
-          <button
-            onPointerDown={(e) => e.stopPropagation()}
-            onClick={(e) => {
-              e.stopPropagation()
-              deleteItem(item.id)
-            }}
-            className="p-1 rounded bg-red-900/80 hover:bg-red-700 text-red-200 hover:text-white transition-colors"
-            title={t.deleteItem}
-          >
-            <XIcon size={12} />
-          </button>
         </div>
       </div>
 

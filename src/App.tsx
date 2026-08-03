@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import {
   DndContext,
   DragOverlay,
@@ -11,6 +11,7 @@ import {
   DragOverEvent,
   pointerWithin,
   rectIntersection,
+  MeasuringStrategy,
 } from '@dnd-kit/core'
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 import { Titlebar } from './components/Titlebar'
@@ -46,7 +47,7 @@ export const App: React.FC = () => {
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        distance: 3,
+        distance: 5,
       },
     }),
     useSensor(KeyboardSensor, {
@@ -54,13 +55,13 @@ export const App: React.FC = () => {
     })
   )
 
-  const findContainer = (id: string) => {
+  const findContainer = useCallback((id: string) => {
     if (id === 'unassigned' || unassignedItems.some((i) => i.id === id)) {
       return 'unassigned'
     }
     const matchingRow = rows.find((r) => r.id === id || r.items.some((i) => i.id === id))
     return matchingRow ? matchingRow.id : null
-  }
+  }, [unassignedItems, rows])
 
   const handleDragStart = (event: DragStartEvent) => {
     const { active } = event
@@ -193,6 +194,7 @@ export const App: React.FC = () => {
   return (
     <DndContext
       sensors={sensors}
+      measuring={{ droppable: { strategy: MeasuringStrategy.Always } }}
       collisionDetection={(args) => {
         const pointerCollisions = pointerWithin(args)
         if (pointerCollisions.length > 0) return pointerCollisions
@@ -243,11 +245,11 @@ export const App: React.FC = () => {
 
       <DragOverlay dropAnimation={{ duration: 150, easing: 'cubic-bezier(0.18, 0.67, 0.6, 1.22)' }}>
         {activeItem ? (
-          <div className="w-20 h-20 bg-surface-elevated rounded-lg border-2 border-white overflow-hidden shadow-2xl scale-110 flex items-center justify-center pointer-events-none opacity-90">
+          <div className="w-20 h-20 bg-surface-elevated rounded-lg border-2 border-white overflow-hidden shadow-2xl scale-110 flex items-center justify-center pointer-events-none opacity-90 will-change-transform">
             <img
               src={activeItem.src}
               alt={activeItem.label || 'Dragging item'}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover pointer-events-none"
             />
           </div>
         ) : null}
