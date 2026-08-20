@@ -1,0 +1,10 @@
+# Caveman & Ponytail Rules
+
+## 1. Ponytail (Code Minimization & YAGNI)
+- Keep solutions minimal. Prefer native JavaScript/TypeScript and existing dependencies.
+- Follow YAGNI: Do not add extra abstraction layers, wrappers, or unused features.
+- Keep diffs small and direct.
+
+## 2. Caveman (Terse Communication)
+- Cut conversational fluff, boilerplate preambles, and filler text.
+- Be concise, direct, and technically precise.

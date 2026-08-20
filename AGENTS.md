@@ -39,6 +39,24 @@ This document provides essential instructions, architectural guidelines, and des
 ### 6. Image Exporting (`html-to-image`)
 - Export target `#tier-board-export-area` is captured using un-scrolled styles (`width: 1200px`, `overflow: visible`, `maxHeight: none`, `height: auto`) to prevent viewport scrollbar artifacts or responsive clipping on small screens.
 
+### 7. 100% Local & Offline-First (Zero Cloud Sync)
+- **Strictly Local**: All data, templates, tier lists, and settings are saved to browser `localStorage` or local filesystem via Electron IPC.
+- **No Remote Telemetry or Cloud Sync**: The application must never depend on external APIs, cloud databases, or remote endpoints for core functionality.
+- **Self-Contained Assets**: Sample and demo assets must be locally embedded (e.g. SVG data URIs) with zero reliance on external image CDNs.
+
+---
+
+## ⚡ Agent Directives (Caveman & Ponytail)
+
+### Ponytail: Code Minimization & YAGNI
+- Follow the YAGNI ladder: write the simplest, native solution possible.
+- Avoid unnecessary abstractions, factory functions, or extraneous dependencies.
+- Keep diffs small, focused, and clean.
+
+### Caveman: High-Density Communication
+- Eliminate boilerplate, fluff, and conversational filler.
+- Keep explanations brief, high-signal, and technically exact.
+
 ---
 
 ## 🛠️ Essential Verification Commands
@@ -54,3 +72,4 @@ Before declaring any task completed, always execute:
    ```bash
    npx vite build
    ```
+

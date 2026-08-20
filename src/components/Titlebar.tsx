@@ -243,34 +243,36 @@ export const Titlebar: React.FC = () => {
         </button>
 
         {/* Custom Window Controls for Frameless Electron Window */}
-        <div className="flex items-center space-x-0.5 ml-1.5 border-l border-border/60 pl-1.5">
-          <button
-            onClick={() => window.electronAPI?.minimizeWindow()}
-            className="p-1.5 rounded hover:bg-surface-hover text-muted-foreground hover:text-foreground transition-colors"
-            title="Minimize"
-          >
-            <Minus className="w-3.5 h-3.5" />
-          </button>
-          <button
-            onClick={async () => {
-              if (window.electronAPI) {
-                const maximized = await window.electronAPI.maximizeWindow()
-                setIsMaximized(maximized)
-              }
-            }}
-            className="p-1.5 rounded hover:bg-surface-hover text-muted-foreground hover:text-foreground transition-colors"
-            title={isMaximized ? 'Restore' : 'Maximize'}
-          >
-            {isMaximized ? <Copy className="w-3 h-3 rotate-180" /> : <Square className="w-3 h-3" />}
-          </button>
-          <button
-            onClick={() => window.electronAPI?.closeWindow()}
-            className="p-1.5 rounded hover:bg-red-600 text-muted-foreground hover:text-white transition-colors"
-            title="Close"
-          >
-            <X className="w-3.5 h-3.5" />
-          </button>
-        </div>
+        {typeof window !== 'undefined' && Boolean(window.electronAPI) && (
+          <div className="flex items-center space-x-0.5 ml-1.5 border-l border-border/60 pl-1.5">
+            <button
+              onClick={() => window.electronAPI?.minimizeWindow()}
+              className="p-1.5 rounded hover:bg-surface-hover text-muted-foreground hover:text-foreground transition-colors"
+              title="Minimize"
+            >
+              <Minus className="w-3.5 h-3.5" />
+            </button>
+            <button
+              onClick={async () => {
+                if (window.electronAPI) {
+                  const maximized = await window.electronAPI.maximizeWindow()
+                  setIsMaximized(maximized)
+                }
+              }}
+              className="p-1.5 rounded hover:bg-surface-hover text-muted-foreground hover:text-foreground transition-colors"
+              title={isMaximized ? 'Restore' : 'Maximize'}
+            >
+              {isMaximized ? <Copy className="w-3 h-3 rotate-180" /> : <Square className="w-3 h-3" />}
+            </button>
+            <button
+              onClick={() => window.electronAPI?.closeWindow()}
+              className="p-1.5 rounded hover:bg-red-600 text-muted-foreground hover:text-white transition-colors"
+              title="Close"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
       </div>
     </header>
   )

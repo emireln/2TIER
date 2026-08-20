@@ -12,13 +12,30 @@ import { useTierStore } from '../store/useTierStore'
 import { TierItemCard } from './TierItemCard'
 import { translations } from '../lib/i18n'
 
+const createSampleSvg = (symbol: string, bg1: string, bg2: string, textCol = '#ffffff') =>
+  `data:image/svg+xml;utf8,${encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="${bg1}"/>
+          <stop offset="100%" stop-color="${bg2}"/>
+        </linearGradient>
+      </defs>
+      <rect width="200" height="200" fill="url(#g)"/>
+      <circle cx="100" cy="100" r="60" fill="none" stroke="${textCol}" stroke-width="2" opacity="0.25"/>
+      <text x="100" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="54" font-weight="900" fill="${textCol}" text-anchor="middle" dominant-baseline="middle">${symbol}</text>
+    </svg>`
+  )}`
+
 const SAMPLE_ITEMS = [
-  { name: 'Alpha', src: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80' },
-  { name: 'Beta', src: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=200&auto=format&fit=crop&q=80' },
-  { name: 'Gamma', src: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=200&auto=format&fit=crop&q=80' },
-  { name: 'Delta', src: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=200&auto=format&fit=crop&q=80' },
-  { name: 'Epsilon', src: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=200&auto=format&fit=crop&q=80' },
+  { name: 'Alpha', src: createSampleSvg('Α', '#18181b', '#27272a') },
+  { name: 'Beta', src: createSampleSvg('Β', '#27272a', '#3f3f46') },
+  { name: 'Gamma', src: createSampleSvg('Γ', '#09090b', '#18181b') },
+  { name: 'Delta', src: createSampleSvg('Δ', '#1e293b', '#334155') },
+  { name: 'Epsilon', src: createSampleSvg('Ε', '#171717', '#262626') },
+  { name: 'Omega', src: createSampleSvg('Ω', '#1c1917', '#292524') },
 ]
+
 
 export const ItemPool: React.FC = () => {
   const { unassignedItems, addItems, clearAllItems, isPoolVisible, togglePoolVisibility, language } = useTierStore()
